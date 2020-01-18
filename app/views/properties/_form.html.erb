@@ -1,7 +1,7 @@
 <%= form_with(model: property, local: true) do |form| %>
   <% if property.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+      <h2><%= property.errors.count %>件のエラーがあります</h2>
 
       <ul>
       <% property.errors.full_messages.each do |message| %>
@@ -30,6 +30,27 @@
     <%= form.label :notes %>
     <%= form.text_area :notes %>
   </div>
+
+  <hr>
+
+  <%= form.fields_for :stations do |stations_form| %>
+    <h3><%= form.label :stations %></h3>
+
+    <div class="field">
+      <%= stations_form.label :line %>
+      <%= stations_form.text_field :line %>
+    </div>
+
+    <div class="field">
+      <%= stations_form.label :station_name %>
+      <%= stations_form.text_field :station_name %>
+    </div>
+
+    <div class="field">
+      <%= stations_form.label :distance_time %>
+      <%= stations_form.number_field :distance_time %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
