@@ -61,7 +61,7 @@ class PropertiesController < ApplicationController
       :property_name,
       :rent, :property_age,
       :notes,
-      stations_attributes: [:id, :line, :station_name, :distance_time]
+      stations_attributes: [:id, :line, :station_name, :distance_time, :_destroy]
     )
   end
 end

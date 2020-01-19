@@ -50,6 +50,12 @@
       <%= stations_form.label :distance_time %>
       <%= stations_form.number_field :distance_time %>
     </div>
+    <% if @property.persisted? %>
+      <div class="field">
+        <%= stations_form.check_box :_destroy %>
+        <%= stations_form.label :_destroy, "削除" %>
+      </div>
+    <% end %>
   <% end %>
 
   <div class="actions">
