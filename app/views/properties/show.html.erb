@@ -13,6 +13,11 @@
 </p>
 
 <p>
+  <strong>住所: </strong>
+  <%= @property.address %>
+</p>
+
+<p>
   <strong>築年数: </strong>
   <%= @property.property_age %>年
 </p>
@@ -40,7 +45,7 @@
 
   <p>
     <strong>徒歩分数: </strong>
-    <%= station.line %>分
+    <%= station.distance_time %>分
   </p>
 <% end %>
 
