@@ -1,0 +1,68 @@
+<%= nested_form_for  property do |form| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= property.errors.count %>件のエラーがあります</h2>
+
+      <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :property_name %><br>
+    <%= form.text_field :property_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rent %><br>
+    <%= form.number_field :rent %>円
+  </div>
+
+  <div class="field">
+    <%= form.label :address %><br>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_age %><br>
+    <%= form.number_field :property_age %>年
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %><br>
+    <%= form.text_area :notes %>
+  </div>
+
+  <hr>
+  <%= form.fields_for :stations do |stations_form| %>
+    <h3>最寄り駅</h3>
+
+    <div class="field">
+      <%= stations_form.label :line %><br>
+      <%= stations_form.text_field :line %>
+    </div>
+
+    <div class="field">
+      <%= stations_form.label :station_name %><br>
+      <%= stations_form.text_field :station_name %>
+    </div>
+
+    <div class="field">
+      <%= stations_form.label :distance_time %><br>
+      <%= stations_form.number_field :distance_time %>分
+    </div>
+    <div class="actions">
+      <%= stations_form.link_to_remove '最寄り駅を削除' %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= form.link_to_add '最寄り駅を追加', :stations %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
